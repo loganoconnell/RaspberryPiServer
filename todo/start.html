@@ -1,0 +1,68 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<script src="https://use.fontawesome.com/f9d64cef7b.js"></script>
+<script src="jquery/jquery-1.4.4.min.js"></script>
+
+<body style="margin:0;overflow:hidden;background-color:black">
+	<a href="http://time.is/Franklin,_Massachusetts" id="time_is_link" rel="nofollow" style="font-size:36px;color:black;background:white;display:none">Time in Franklin:</a>
+
+	<div id="container" style="width:100%;height:100%;text-align:center;display:table">
+		<a href="http://108.20.161.15/todo/weather.php" class="buttons" style="opacity:0">
+			<i class="fa fa-sun-o fa-3x" style="color:white;position:absolute;top:10px;left:10px"></i>
+		</a>
+
+		<a href="http://108.20.161.15/todo" class="buttons" style="opacity:0">
+			<i class="fa fa-list-alt fa-3x" style="color:white;position:absolute;top:10px;right:10px"></i>
+		</a>
+
+		<a href="https://google.com" class="buttons" style="opacity:0">
+			<i class="fa fa-search fa-3x" style="color:white;position:absolute;bottom:10px;left:10px"></i>
+		</a>
+
+		<a href="https://news.ycombinator.com" class="buttons" style="opacity:0">
+			<i class="fa fa-newspaper-o fa-3x" style="color:white;position:absolute;bottom:10px;right:10px"></i>
+		</a>
+
+		<span id="Franklin__Massachusetts_z161" style="font-family:'Roboto',sans-serif;font-size:84px;font-weight:bold;color:white;display:table-cell;vertical-align:middle"></span>
+	</div>
+
+	<script src="http://widget.time.is/en.js"></script>
+
+	<script>
+		time_is_widget.init({
+			Franklin__Massachusetts_z161:{
+					template:"TIME", 
+					time_format:"12hours:minutes:seconds AMPM"
+				}
+			}
+		);
+	</script>
+
+	<script type="text/javascript">
+		$("#container").click(function(e) {
+			if($(e.target).is('i')){
+				return;
+			}
+
+			if (confirm('Would you like to shutdown your Raspberry Pi?')) {
+				if(prompt('Enter your password to validate shutdown.','') == atob('c2h1dGRvd250aGVwaQ==')) {
+			    	window.location = "http://108.20.161.15/todo/shutdown.php";
+				}
+			}
+
+			else {
+				if (confirm('Would you like to restart your Raspberry Pi?')) {
+					if(prompt('Enter your password to validate restart.','') == atob('cmVzdGFydHRoZXBp')) {
+				    	window.location = "http://108.20.161.15/todo/restart.php";
+					}
+				}
+			}
+		});
+
+		$(".buttons").hover(function() {
+			$(".buttons").fadeTo("fast", 1, function() {});
+		}, function() {
+			$(".buttons").fadeTo("fast", 0, function() {});
+		});		
+	</script>
+</body>
